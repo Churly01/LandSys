@@ -1,4 +1,5 @@
 import MainView from './MainView';
+import TablesView from './TablesView';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -18,7 +19,11 @@ const LandSys = () => {
     {
       path: '/',
       element: <MainView />,
-    }
+    },
+    {
+      path: '/tables',
+      element: <TablesView />,
+    },
   ]);
 
   return (
