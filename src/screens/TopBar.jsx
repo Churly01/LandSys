@@ -9,20 +9,32 @@ import { useSupabase } from '@/contexts/SupabaseContext';
 
 const TopBar = () => {
   const { user } = useSupabase();
+
   return (
-    <div className="bg-blue-500 text-white p-4 flex justify-between items-center">
-      <span className="font-bold text-lg w-full text-center">LandSys</span>
+    <div className="bg-blue-500 text-white p-3 flex justify-between items-center">
+      <span className="font-bold text-lg w-full">LandSys</span>
       {user && (
-        <Dropdown>
-          <DropdownTrigger>
-            {user.email}
-          </DropdownTrigger>
-          <DropdownMenu aria-label="User Actions">
-            <DropdownItem key="profile">Profile</DropdownItem>
-            <DropdownItem key="settings">Settings</DropdownItem>
-            <DropdownItem key="logout" color="error">Logout</DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
+        <div className='flex items-center'>
+          <Dropdown>
+            <DropdownTrigger className="flex items-center bg-white text-blue-500 font-semibold py-1 px-2 rounded-full">
+              <span className="ml-2">Perfil</span>
+            </DropdownTrigger>
+            <DropdownMenu aria-label="Perfil">
+              <DropdownItem key="user.email">
+                <span className="font-bold">Email:</span> {user.email}
+              </DropdownItem>
+              <DropdownItem key="user.nickname">
+                <span className="font-bold">Nickname:</span> {user.nickname}
+              </DropdownItem>
+              <DropdownItem key="user.nombre">
+                <span className="font-bold">Nombre:</span> {user.nombre}
+              </DropdownItem>
+              <DropdownItem key="user.apellidos">
+                <span className="font-bold">Apellidos:</span> {user.apellidos}
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </div>
       )}
     </div>
   );
