@@ -1,6 +1,9 @@
-import React from 'react';
+import {
+  Link
+} from 'react-router-dom';
 
 const MainView = () => {
+
   return (
     // Added mt-0 to start from the top and mb-auto to push everything up
     <div className="flex flex-col items-center justify-start mt-0 mb-auto pt-10 h-screen">
@@ -15,17 +18,27 @@ const MainView = () => {
       {/* Button and Description for Terrenos */}
       <div className="mb-4 text-center">
         <p className="mb-2">Explore y gestione sus Terrenos.</p>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <Link
+          to={{
+            pathname: "/tables",
+            hash: "#terrenos"
+          }}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Terrenos
-        </button>
+        </Link>
       </div>
 
       {/* Button and Description for Parcelas */}
       <div className="text-center">
         <p className="mb-2">Explore y gestione sus Parcelas.</p>
-        <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+        <Link
+          to={{
+            pathname: "/tables",
+            hash: "#parcelas"
+          }}
+          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
           Parcelas
-        </button>
+        </Link>
       </div>
     </div>
   );

@@ -4,13 +4,14 @@ import App from './App.jsx'
 import './index.css'
 import { NextUIProvider } from "@nextui-org/react";
 import { SupabaseProvider } from './contexts/SupabaseContext';
-
+import { Toaster } from 'react-hot-toast';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <NextUIProvider className="w-full h-full">
       <SupabaseProvider>
         <App />
+        <Toaster />
       </SupabaseProvider>
     </NextUIProvider>
   </React.StrictMode>,

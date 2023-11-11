@@ -26,7 +26,6 @@ const Register = () => {
 
   const handleRegister = async () => {
     try {
-      debugger;
       await supabase?.register(register_email, register_password, {
         apellidos,
         nombre,

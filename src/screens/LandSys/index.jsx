@@ -27,7 +27,11 @@ const LandSys = () => {
   ]);
 
   return (
-    <RouterProvider router={router} />
+    <div
+      className="p-6"
+    >
+      <RouterProvider router={router} />
+    </div>
   );
 }
 export default LandSys;
