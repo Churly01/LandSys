@@ -27,6 +27,8 @@ const AddEntityModal = ({
 
   const queryClient = useQueryClient();
 
+  const is_wrong_input = Object.values(values).some((value) => value === '');
+
   return (
     <Modal
       isOpen={open}
@@ -50,6 +52,7 @@ const AddEntityModal = ({
               </div>
             ))}
           </div>
+          {is_wrong_input && <p className="text-red-500 text-xl text-center">Por favor, rellena todos los campos</p>}
         </ModalBody>
         <ModalFooter>
           <Button
@@ -62,6 +65,7 @@ const AddEntityModal = ({
           <AsyncButton
             auto
             color="primary"
+            isDisabled={is_wrong_input}
             onClick={async () => {
               await supabase
                 .from(entity)

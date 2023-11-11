@@ -23,7 +23,7 @@ const TablesView = () => {
           key="#parcelas"
         >
           <BaseTable
-            fields={['ubicación', 'límites', 'id_terreno', 'número']}
+            fields={['dirección', 'límites', 'id_terreno', 'número']}
             entity='parcelas'
           />
         </Tab>
