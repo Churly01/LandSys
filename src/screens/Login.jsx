@@ -41,8 +41,8 @@ const LoginScreen = () => {
 
   return (
     <div
-      className={`flex p-10 drop-shadow border-solid border-1 border-black/20 flex-col
-                  gap-5 items-center justify-center rounded-3xl bg-slate-100`}>
+      className={`flex p-10 drop-shadow border-solid border-1 border-grey/20 flex-col
+                  gap-5 items-center justify-center rounded-3xl bg-blue-100`}>
       <h1>Inicio de sesión</h1>
       <div
         className="flex flex-col items-center justify-center gap-4"
@@ -59,6 +59,7 @@ const LoginScreen = () => {
           onValueChange={setLoginPassword}
           value={login_password} />
         <Button
+          className="ml-2 bg-white text-black-500 font-semibold py-1 px-2 rounded-full"
           onClick={handleLogin}
           isDisabled={wrong_input}
         >
@@ -68,7 +69,7 @@ const LoginScreen = () => {
           to="/register"
           className="text-xl text-blue-500 hover:underline"
         >
-          ¿No tienes una cuenta? Clica aquí
+          ¿No tiene una cuenta? Haga click aquí
         </Link>
       </div>
     </div>

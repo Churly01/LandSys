@@ -39,8 +39,9 @@ const Register = () => {
   }
 
   return (
-    <div className="flex flex-col gap-5 w-full h-full items-center justify-center">
-      <h2>Registro</h2>
+    <div className="flex p-10 drop-shadow border-solid border-1 border-grey/20 flex-col
+    gap-5 items-center justify-center rounded-3xl bg-blue-100">
+      <h1>Registro</h1>
       <div
         className="flex flex-col items-center justify-center gap-4"
       >
@@ -51,7 +52,7 @@ const Register = () => {
           value={nombre}
         />
         <Input
-          placeholder="Apellido..."
+          placeholder="Apellidos..."
           type="text"
           onValueChange={setApellidos}
           value={apellidos}
@@ -74,15 +75,19 @@ const Register = () => {
           onValueChange={setRegisterPassword}
           value={register_password} />
         <Input
-          placeholder="Repite la contraseña..."
+          placeholder="Repita la contraseña..."
           type="password"
           onValueChange={setRepeatRegisterPassword}
           value={repeat_register_password} />
         <Button
+          className="ml-2 bg-white text-black-500 font-semibold py-2 px-4 rounded-full"
           onClick={async () => { await handleRegister() }}
           isDisabled={wrong_input}
         >Registrarse</Button>
-        <Link to="/">Ya tienes una cuenta? Clica aquí</Link>
+        <Link to="/"
+        className="text-xl text-blue-500 hover:underline"
+        >
+          ¿Ya tiene una cuenta? Haga clic aquí</Link>
       </div>
     </div>
   )

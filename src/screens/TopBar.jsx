@@ -8,7 +8,10 @@ import {
 import { useSupabase } from '@/contexts/SupabaseContext';
 
 const TopBar = () => {
-  const { user } = useSupabase();
+  const { user, logout } = useSupabase();
+  const handleLogout = async () => {
+    logout();
+  };
 
   return (
     <div className="bg-blue-500 text-white p-3 flex justify-between items-center">
@@ -34,6 +37,12 @@ const TopBar = () => {
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
+          <button
+            className="ml-2 bg-white text-danger-500 font-semibold py-1 px-2 rounded-full"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
         </div>
       )}
     </div>
