@@ -8,6 +8,15 @@ import { useSupabase } from './contexts/SupabaseContext';
 import LandSys from './screens/LandSys';
 import Login from './screens/Login';
 import TopBar from './screens/TopBar';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+    },
+  },
+})
 
 function App() {
 
@@ -15,10 +24,12 @@ function App() {
 
   return (
     <>
-      <TopBar />
       {user
         ? (
-          <LandSys />
+          <QueryClientProvider client={queryClient}>
+            <TopBar />
+            <LandSys />
+          </QueryClientProvider>
         )
         : (
           <div
