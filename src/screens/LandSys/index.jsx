@@ -3,6 +3,7 @@ import TablesView from './TablesView';
 import {
   createBrowserRouter,
   RouterProvider,
+  redirect,
 } from 'react-router-dom';
 
 // Este es el componente principal donde hay que meter todos los demas componentes.
@@ -23,6 +24,10 @@ const LandSys = () => {
     {
       path: '/tables',
       element: <TablesView />,
+    },
+    {
+      path: '*',
+      loader: () => redirect('/'),
     },
   ]);
 
