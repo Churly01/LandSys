@@ -16,6 +16,33 @@ import {
 import { supabase } from '@/contexts/SupabaseClient';
 import AddEntityModal from "./AddEntityModal";
 import ModifyEntityModal from "./ModifyEntityModal";
+import DeleteEntityModal from "./DeleteEntityModal";
+
+const DeleteEntityButton = ({
+  entity,
+  id,
+}) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      className="flex align-items-end justify-start w-full"
+    >
+      <Button
+        className="align-self-end"
+        onClick={() => setOpen(true)}
+        color="danger"
+      >
+        Borrar
+      </Button>
+      <DeleteEntityModal
+        entity={entity}
+        isOpen={open}
+        setOpen={setOpen}
+        id={id}
+      />
+    </div>
+  );
+}
 
 const AddEntityButton = ({
   entity,
@@ -94,7 +121,7 @@ const BaseTable = ({
       />
       <Table>
         <TableHeader>
-          {extra_fields.concat('modificar').map((field) => (
+          {extra_fields.concat(['modificar', 'borrar']).map((field) => (
             <TableColumn key={field}>{field}</TableColumn>
           ))}
         </TableHeader>
@@ -108,6 +135,12 @@ const BaseTable = ({
                 <ModifyEntityButton
                   entity={entity}
                   fields={fields}
+                  id={item.id}
+                />
+              </TableCell>
+              <TableCell key={"borrar"}>
+                <DeleteEntityButton
+                  entity={entity}
                   id={item.id}
                 />
               </TableCell>

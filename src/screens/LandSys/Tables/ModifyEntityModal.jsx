@@ -62,7 +62,7 @@ const ModifyEntityModal = ({
         .update(values)
         .match({ id });
       toast.success('Modificado correctamente');
-      await queryClient.invalidateQueries(entity);
+      await queryClient.invalidateQueries([entity]);
       setOpen(false);
 
     } catch (err) {
@@ -113,7 +113,7 @@ const ModifyEntityModal = ({
             onClick={handleModify}
             color="primary"
             auto
-            disabled={wrong_input}
+            isDisabled={wrong_input}
           >
             Modificar
           </AsyncButton>
