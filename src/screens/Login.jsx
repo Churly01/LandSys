@@ -69,7 +69,7 @@ const LoginScreen = () => {
           to="/register"
           className="text-xl text-blue-500 hover:underline"
         >
-          ¿No tiene una cuenta? Haga click aquí
+          ¿No tiene cuenta? Haga clic aquí
         </Link>
       </div>
     </div>
