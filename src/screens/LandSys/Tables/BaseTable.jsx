@@ -111,7 +111,7 @@ const BaseTable = ({
       return data ?? [];
     }
   });
-  const extra_fields = fields?.concat(['id']); // Adds ID and the modify dropdown
+  const extra_fields = ['id'].concat(fields); // Adds ID and the modify dropdown
   if (isLoading || data == null) return <p>Loading...</p>
   return (
     <div className="flex flex-col gap-2 items-center">
