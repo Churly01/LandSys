@@ -3,7 +3,6 @@ import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
-  DropdownSection,
   DropdownItem
 } from '@nextui-org/react';
 import { useSupabase } from '@/contexts/SupabaseContext';
@@ -12,11 +11,11 @@ const TopBar = () => {
   const { user } = useSupabase();
   return (
     <div className="bg-blue-500 text-white p-4 flex justify-between items-center">
-      <span className="font-bold text-lg">LandSys</span>
+      <span className="font-bold text-lg w-full text-center">LandSys</span>
       {user && (
         <Dropdown>
-          <DropdownTrigger flat>
-            {user.nickname || user.email} {/* Display user nickname or email */}
+          <DropdownTrigger>
+            {user.email}
           </DropdownTrigger>
           <DropdownMenu aria-label="User Actions">
             <DropdownItem key="profile">Profile</DropdownItem>
