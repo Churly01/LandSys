@@ -75,7 +75,7 @@ export const SupabaseProvider = ({ children }) => {
       throw new Error(signInError?.message);
     }
     if (data?.user == null || signInError != null) {
-      throw new Error('User not found');
+      throw new Error(signInError?.message ?? 'Error al registrarse');
     }
 
     setSession(data?.session);
