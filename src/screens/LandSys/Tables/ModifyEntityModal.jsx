@@ -57,10 +57,12 @@ const ModifyEntityModal = ({
 
   const handleModify = async () => {
     try {
-      await supabase
+      const res = await supabase
         .from(entity)
         .update(values)
         .match({ id });
+
+      if (res.error) throw res.error;
       toast.success('Modificado correctamente');
       await queryClient.invalidateQueries([entity]);
       setOpen(false);
@@ -100,6 +102,7 @@ const ModifyEntityModal = ({
               </div>
             ))}
           </div>
+          {wrong_input && <p className="text-red-500 text-xl text-center">Por favor, rellena todos los campos</p>}
         </ModalBody>
         <ModalFooter>
           <Button

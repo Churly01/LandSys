@@ -67,14 +67,14 @@ const AddEntityModal = ({
             color="primary"
             isDisabled={is_wrong_input}
             onClick={async () => {
-              await supabase
+              const res = await supabase
                 .from(entity)
-                .insert(values)
-                .then((res) => console.log(res))
-                .catch((err) => {
-                  console.log(err);
-                  toast.error('Error al añadir: ' + err.message);
-                });
+                .insert(values);
+              if (res.error) {
+                toast.error('Error al añadir: ' + res.error.message);
+                return;
+              }
+              toast.success(`${entity.slice(0, -1)} añadida con éxito`);
               await queryClient.invalidateQueries(entity);
               setOpen(false);
             }}
