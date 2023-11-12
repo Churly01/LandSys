@@ -6,11 +6,14 @@ import {
   DropdownItem
 } from '@nextui-org/react';
 import { useSupabase } from '@/contexts/SupabaseContext';
+import { useNavigate } from 'react-router-dom';
 
 const TopBar = () => {
   const { user, logout } = useSupabase();
+  const navigate = useNavigate();
   const handleLogout = async () => {
-    logout();
+    navigate('/');
+    await logout();
   };
 
   return (

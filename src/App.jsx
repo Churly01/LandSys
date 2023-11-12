@@ -31,7 +31,6 @@ function App() {
       {user
         ? (
           <QueryClientProvider client={queryClient}>
-            <TopBar />
             <LandSys />
             <ReactQueryDevtools />
           </QueryClientProvider>

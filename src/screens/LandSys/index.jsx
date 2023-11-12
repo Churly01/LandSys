@@ -4,8 +4,9 @@ import {
   createBrowserRouter,
   RouterProvider,
   redirect,
+  Outlet,
 } from 'react-router-dom';
-
+import TopBar from '@/screens/TopBar';
 // Este es el componente principal donde hay que meter todos los demas componentes.
 // Hay una carpeta en la que esta este componente que se llama LandSys,
 // ahi es donde hay que meter todos los demas componentes, con su nombre apropiado
@@ -19,24 +20,40 @@ const LandSys = () => {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <MainView />,
-    },
-    {
-      path: '/tables',
-      element: <TablesView />,
-    },
-    {
-      path: '*',
-      loader: () => redirect('/'),
-    },
+      element: <NavBarWrapper />,
+      children: [
+        {
+          path: '/',
+          element: <MainView />,
+        },
+        {
+          path: '/tables',
+          element: <TablesView />,
+        },
+        {
+          path: '*',
+          loader: () => redirect('/'),
+        },
+      ]
+    }
   ]);
 
   return (
-    <div
-      className="p-6"
-    >
+    <div>
       <RouterProvider router={router} />
     </div>
   );
 }
+
+const NavBarWrapper = () => {
+  return (
+    <>
+      <TopBar />
+      <main className='px-10 py-5 pb-10 h-full overflow-y-auto dark:bg-black dark:text-white'>
+        <Outlet />
+      </main>
+    </>
+  );
+};
+
 export default LandSys;
