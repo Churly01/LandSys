@@ -39,7 +39,23 @@ const TablesView = () => {
             entity='terrenos'
           />
         </Tab>
-        <Tab>
+        <Tab
+          title="Arrendatarios"
+          key="#arrendatarios"
+        >
+          <BaseTable
+            fields={['nombre', 'apellidos', 'dni', 'teléfono', 'email']}
+            entity='arrendatarios'
+          />
+        </Tab>
+        <Tab
+          title="Alquileres"
+          key="#alquileres"
+        >
+          <BaseTable
+            fields={['nombre', 'apellidos', 'dni', 'teléfono', 'email']}
+            entity='alquileres'
+          />
         </Tab>
       </Tabs>
     </div>

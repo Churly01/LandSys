@@ -29,7 +29,7 @@ const MainView = () => {
       </div>
 
       {/* Button and Description for Parcelas */}
-      <div className="text-center">
+      <div className="mb-4 text-center">
         <p className="mb-2">Explore y gestione sus Parcelas.</p>
         <Link
           to={{
@@ -38,6 +38,28 @@ const MainView = () => {
           }}
           className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
           Parcelas
+        </Link>
+      </div>
+      <div className="mb-4 text-center">
+        <p className="mb-2">Explore y gestione sus Parcelas.</p>
+        <Link
+          to={{
+            pathname: "/tables",
+            hash: "#arrendatarios"
+          }}
+          className="bg-red-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+          Arrendatarios
+        </Link>
+      </div>
+      <div className="mb-4 text-center">
+        <p className="mb-2">Explore y gestione sus Alquileres.</p>
+        <Link
+          to={{
+            pathname: "/tables",
+            hash: "#alquileres"
+          }}
+          className="bg-slate-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+          Alquileres
         </Link>
       </div>
     </div>
