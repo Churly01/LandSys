@@ -47,6 +47,7 @@ const DeleteEntityButton = ({
 const AddEntityButton = ({
   entity,
   fields,
+  singular_entity,
 }) => {
   const [open, setOpen] = useState(false);
   return (
@@ -57,13 +58,14 @@ const AddEntityButton = ({
         className="align-self-end"
         onClick={() => setOpen(true)}
       >
-        Añadir {entity.slice(0, -1)}
+        Añadir {singular_entity ?? entity.slice(0, -1)}
       </Button>
       <AddEntityModal
         entity={entity}
         open={open}
         setOpen={setOpen}
         fields={fields}
+        singular_entity={singular_entity}
       />
     </div>
   );
@@ -73,6 +75,7 @@ const ModifyEntityButton = ({
   entity,
   fields,
   id,
+  singular_entity,
 }) => {
   const [open, setOpen] = useState(false);
   return (
@@ -83,7 +86,7 @@ const ModifyEntityButton = ({
         className="align-self-end"
         onClick={() => setOpen(true)}
       >
-        Modificar {entity.slice(0, -1)}
+        Modificar {singular_entity ?? entity.slice(0, -1)}
       </Button>
       <ModifyEntityModal
         entity={entity}
@@ -98,7 +101,8 @@ const ModifyEntityButton = ({
 
 const BaseTable = ({
   fields,
-  entity
+  entity,
+  singular_entity,
 }) => {
 
   const { data, isLoading } = useQuery({
@@ -118,6 +122,7 @@ const BaseTable = ({
       <AddEntityButton
         entity={entity}
         fields={fields ?? []}
+        singular_entity={singular_entity}
       />
       <Table>
         <TableHeader>
@@ -135,6 +140,7 @@ const BaseTable = ({
                 <ModifyEntityButton
                   entity={entity}
                   fields={fields}
+                  singular_entity={singular_entity}
                   id={item.id}
                 />
               </TableCell>

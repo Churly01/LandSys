@@ -2,11 +2,14 @@ import { useState } from 'react';
 import { useSupabase } from '../contexts/SupabaseContext';
 import { Link } from 'react-router-dom';
 import { Card, Input, Button } from "@nextui-org/react";
+import AsyncButton from '@/components/AsyncButton';
 import RegisterScreen from './Register';
 import {
   createBrowserRouter,
   RouterProvider
 } from 'react-router-dom';
+
+import toast from 'react-hot-toast';
 
 const Login = () => {
 
@@ -37,7 +40,13 @@ const LoginScreen = () => {
 
     if (supabase == null) return <div>Loading...</div>
 
-  const handleLogin = async () => await supabase.login(login_email, login_password);
+  const handleLogin = async () => {
+    try {
+      await supabase.login(login_email, login_password);
+    } catch (err) {
+      toast.error('Error al iniciar sesión: ' + err);
+    }
+  };
 
   return (
     <div
@@ -58,13 +67,13 @@ const LoginScreen = () => {
           type="password"
           onValueChange={setLoginPassword}
           value={login_password} />
-        <Button
+        <AsyncButton
           className="ml-2 bg-white text-black-500 font-semibold py-1 px-2 rounded-full"
           onClick={handleLogin}
           isDisabled={wrong_input}
         >
           Log in
-        </Button>
+        </AsyncButton>
         <Link
           to="/register"
           className="text-xl text-blue-500 hover:underline"

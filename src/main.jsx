@@ -10,8 +10,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <NextUIProvider className="w-full h-full">
       <SupabaseProvider>
-        <App />
         <Toaster />
+        <App />
+
       </SupabaseProvider>
     </NextUIProvider>
   </React.StrictMode>,

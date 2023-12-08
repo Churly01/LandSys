@@ -18,6 +18,7 @@ const AddEntityModal = ({
   fields,
   open,
   setOpen,
+  singular_entity,
 }) => {
 
   const [values, setValues] = useState(fields?.reduce((acc, field) => {
@@ -74,7 +75,7 @@ const AddEntityModal = ({
                 toast.error('Error al añadir: ' + res.error.message);
                 return;
               }
-              toast.success(`${entity.slice(0, -1)} añadida con éxito`);
+              toast.success(`${singular_entity} añadido con éxito`);
               await queryClient.invalidateQueries(entity);
               setOpen(false);
             }}
