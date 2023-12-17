@@ -41,7 +41,7 @@ const MainView = () => {
         </Link>
       </div>
       <div className="mb-4 text-center">
-        <p className="mb-2">Explore y gestione sus Parcelas.</p>
+        <p className="mb-2">Explore y gestione sus Arrendatarios.</p>
         <Link
           to={{
             pathname: "/tables",
